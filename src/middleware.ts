@@ -14,5 +14,5 @@ export const config = {
    * `.*..*`, matching every path of two characters or more and silently
    * disabling the middleware for the entire site.
    */
-  matcher: ['/((?!admin|api|_next|_vercel|.*\\..*).*)'],
+  matcher: ['/', '/((?!admin|api|_next|_vercel|.*\\..*).*)'],
 };
