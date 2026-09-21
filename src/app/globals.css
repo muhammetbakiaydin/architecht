@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Syne.ttf is a variable font with a 400-800 weight axis. Declaring only
+   700-800 meant body copy asking for 400 was served the 700 master, so every
+   paragraph rendered bold. */
+@font-face {
+  font-family: 'Syne';
+  /* woff2 first: same variable font, 59KB instead of 143KB. The .ttf stays as
+     a fallback for anything that cannot read woff2 (nothing current). */
+  src:
+    url('/fonts/Syne.woff2') format('woff2'),
+    url('/fonts/Syne.ttf') format('truetype');
+  font-weight: 400 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --background: #F5EFE6;
+  --foreground: #161413;
+  --rose-crimson: #8B1117;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background-color: #F5EFE6;
+  color: #161413;
+  font-family: 'Syne', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+body {
+  background-color: #F5EFE6;
+  color: #161413;
+  min-height: 100vh;
+}
+
+/* Luxury Radial Cream Atmosphere */
+.bg-radial-cream {
+  background: radial-gradient(circle at 50% 48%, #FAF6F0 0%, #F5EFE6 58%, #EAE0D2 100%);
+}
+
+/* Subtle Architectural Paper Grain */
+.bg-editorial-grain {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Lenis Recommended Smooth Scroll CSS */
+html.lenis, html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+/* Custom Minimal Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F5EFE6;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D8CEBF;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #A88F72;
+}

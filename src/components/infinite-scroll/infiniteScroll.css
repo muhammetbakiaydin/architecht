@@ -1,0 +1,722 @@
+@import url('https://use.typekit.net/hrf4hvy.css');
+@import url('https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,300..800;1,300..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+:root {
+  --color-text: #9b9b9b;
+  --color-bg: #eaeeed;
+  --color-link: #9b9b9b;
+  --color-link-hover: #000000;
+  --color-desc: #9b9b9b;
+  --page-padding: 1.5rem;
+}
+
+.infinite-scroll-root {
+  font-size: 12px;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  /* `svh` = the viewport at its SMALLEST (toolbars shown). `dvh` would change
+     as a mobile browser's bars slide away, firing a resize mid-scroll and
+     forcing the loop to rebuild. */
+  height: 100svh;
+
+  /* Two knobs the mobile breakpoint turns down: the archive's layout is
+     authored in vw, which collapses to thumbnails on a phone. */
+  --img-scale: 1;
+  --stagger-scale: 1;
+  overflow: hidden;
+  margin: 0;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  font-family: "host-grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  overscroll-behavior: none;
+  touch-action: none;
+  user-select: none;
+}
+
+.infinite-scroll-root.loading::before,
+.infinite-scroll-root.loading::after {
+  content: "";
+  position: fixed;
+  z-index: 10000;
+}
+
+.infinite-scroll-root.loading::before {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--color-bg);
+}
+
+.infinite-scroll-root.loading::after {
+  top: 50%;
+  left: 50%;
+  width: 100px;
+  height: 1px;
+  margin: 0 0 0 -50px;
+  background: var(--color-link);
+  animation: infiniteLoaderAnim 1.5s ease-in-out infinite alternate forwards;
+}
+
+@keyframes infiniteLoaderAnim {
+  0% {
+    transform: scaleX(0);
+    transform-origin: 0% 50%;
+  }
+  50% {
+    transform: scaleX(1);
+    transform-origin: 0% 50%;
+  }
+  50.1% {
+    transform: scaleX(1);
+    transform-origin: 100% 50%;
+  }
+  100% {
+    transform: scaleX(0);
+    transform-origin: 100% 50%;
+  }
+}
+
+.infinite-scroll-root a {
+  text-decoration: none;
+  color: var(--color-link);
+  outline: none;
+  cursor: pointer;
+}
+
+.infinite-scroll-root a:hover {
+  text-decoration: underline;
+  color: var(--color-link-hover);
+}
+
+.infinite-scroll-root a:focus {
+  outline: none;
+  background: lightgrey;
+}
+
+.infinite-scroll-root a:not(:focus-visible) {
+  background: transparent;
+}
+
+.infinite-scroll-root a:focus-visible {
+  outline: 2px solid #8B1117;
+  background: transparent;
+}
+
+/* Header Frame */
+.infinite-scroll-root .frame {
+  padding: var(--page-padding);
+  display: grid;
+  z-index: 100;
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto 1fr auto;
+  align-content: space-between;
+  grid-template-areas:
+    "title links"
+    ".     ."
+    "tags  sponsor";
+  gap: 1rem;
+}
+
+.infinite-scroll-root .frame__note {
+  justify-self: end;
+  align-self: end;
+  grid-area: sponsor;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  color: #555555;
+}
+
+.infinite-scroll-root .frame a,
+.infinite-scroll-root .frame button {
+  pointer-events: auto;
+}
+
+.infinite-scroll-root .frame__title {
+  grid-area: title;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  margin: 0;
+  color: #161413;
+  text-transform: uppercase;
+}
+
+.infinite-scroll-root .frame__tags {
+  grid-area: tags;
+  align-self: end;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: #666666;
+}
+
+.infinite-scroll-root .frame__links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.5rem;
+  grid-area: links;
+  justify-self: end;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+
+.infinite-scroll-root .frame__links a {
+  color: #444444;
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+.infinite-scroll-root .frame__links a:hover {
+  color: #8B1117;
+}
+
+@media screen and (min-width: 53em) {
+  .infinite-scroll-root .frame {
+    grid-template-columns: auto 1fr auto;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+      "title . links"
+      ".     . ."
+      "tags  . sponsor";
+  }
+
+  .infinite-scroll-root .frame__tags {
+    align-self: end;
+  }
+
+  .infinite-scroll-root .frame__links,
+  .infinite-scroll-root .frame__note {
+    justify-self: end;
+    text-align: right;
+  }
+}
+
+/* Gallery */
+.infinite-scroll-root .gallery {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18vh;
+  width: 100%;
+  padding-top: 16vh;
+}
+
+.infinite-scroll-root .gallery__slide {
+  flex-shrink: 0;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  margin: 0;
+  position: relative;
+}
+
+.infinite-scroll-root .gallery__slide-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: translateX(calc(var(--stagger, 0vw) * var(--stagger-scale, 1)));
+  will-change: transform;
+}
+
+.infinite-scroll-root .gallery__slide figcaption {
+  display: block;
+  margin-top: 0.75rem;
+  color: #333333;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-align: center;
+}
+
+.infinite-scroll-root .gallery__img-wrapper {
+  position: relative;
+  margin: 0;
+  width: calc(var(--img-w, 200px) * var(--img-scale, 1));
+  height: auto;
+  aspect-ratio: 0.8;
+  overflow: hidden;
+  pointer-events: none;
+  user-select: none;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+.infinite-scroll-root .gallery__img-wrapper img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.2);
+}
+
+/**
+ * Content: Fixed popup overlay
+ */
+.infinite-scroll-root .content {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background-color: var(--color-bg);
+}
+
+/**
+ * Content: Clicked image lands here
+ */
+.infinite-scroll-root .content__preview-img {
+  position: fixed;
+  margin: 0;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  aspect-ratio: 0.8;
+  overflow: hidden;
+  touch-action: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.infinite-scroll-root .content__preview-img img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.2);
+  touch-action: none;
+  -webkit-user-drag: none;
+}
+
+.infinite-scroll-root .content__preview-img .preview-img-primary {
+  z-index: 1;
+}
+
+.infinite-scroll-root .content__preview-img .preview-img-secondary {
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Nav Chevrons inside the preview image */
+.infinite-scroll-root .content__nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(20, 20, 20, 0.45);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  transition: background-color 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+}
+
+.infinite-scroll-root .content__nav-btn:hover {
+  background: rgba(20, 20, 20, 0.85);
+  transform: translateY(-50%) scale(1.08);
+}
+
+.infinite-scroll-root .content__nav-btn:active {
+  transform: translateY(-50%) scale(0.94);
+}
+
+.infinite-scroll-root .content__nav-btn--prev {
+  left: 1.25rem;
+}
+
+.infinite-scroll-root .content__nav-btn--next {
+  right: 1.25rem;
+}
+
+/* Vertical Counter Indicator (Positioned right at the photo edge) */
+.infinite-scroll-root .content__counter {
+  position: fixed;
+  left: calc(80vh + 2.5rem);
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  z-index: 1020;
+  pointer-events: auto;
+  cursor: pointer;
+  user-select: none;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.infinite-scroll-root .content__counter-current {
+  font-family: "ivyora-display", "Playfair Display", Georgia, serif;
+  font-size: 1.75rem;
+  font-weight: 500;
+  color: #141414;
+  line-height: 1;
+}
+
+.infinite-scroll-root .content__counter-track {
+  width: 2px;
+  height: 80px;
+  background: rgba(20, 20, 20, 0.12);
+  border-radius: 1px;
+  position: relative;
+  overflow: hidden;
+}
+
+.infinite-scroll-root .content__counter-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  /* Filled by `--counter-fill`, which the transition writes as a percentage.
+     Using a custom property rather than a hard-coded axis is what lets the
+     mobile breakpoint below swap the bar from vertical to horizontal without
+     touching any JavaScript. */
+  height: var(--counter-fill, 25%);
+  background: #8B1117;
+  border-radius: 1px;
+  transition: height 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+    width 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.infinite-scroll-root .content__counter-total {
+  font-family: "host-grotesk", monospace, sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #888;
+  letter-spacing: 0.05em;
+}
+
+.infinite-scroll-root .content__counter-hint {
+  margin-top: 0.6rem;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #999;
+  opacity: 0.85;
+}
+
+@media screen and (max-width: 900px) {
+  .infinite-scroll-root .content__counter {
+    left: auto;
+    right: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+.infinite-scroll-root .content__group-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100svh;
+  padding-left: calc(80vh + 8rem);
+  padding-right: clamp(2rem, 5vw, 6rem);
+  padding-block: 4rem;
+  box-sizing: border-box;
+}
+
+.infinite-scroll-root .content__back {
+  font-family: "host-grotesk", -apple-system, sans-serif;
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  align-self: flex-start;
+  border: none;
+  background: none;
+  color: #555555;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 2.25rem;
+  line-height: inherit;
+  transition: color 0.2s ease, transform 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.infinite-scroll-root .content__back:hover {
+  color: #8B1117;
+  transform: translateX(-3px);
+}
+
+.infinite-scroll-root .content__group {
+  display: none;
+  width: 100%;
+  max-width: 620px;
+}
+
+.infinite-scroll-root .content__group.active {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.infinite-scroll-root .content__category {
+  font-family: "host-grotesk", -apple-system, sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #8B1117;
+  font-weight: 700;
+  margin-bottom: 0.85rem;
+  display: block;
+}
+
+.infinite-scroll-root .content__title {
+  font-family: "ivyora-display", "Playfair Display", Georgia, serif;
+  font-weight: 400;
+  font-size: clamp(2.25rem, 3.5vw, 3.75rem);
+  line-height: 1.12;
+  letter-spacing: -0.015em;
+  color: #141414;
+  margin-top: 0;
+  margin-bottom: 1.25rem;
+  text-align: left;
+}
+
+.infinite-scroll-root .content__title:focus {
+  outline: none;
+}
+
+.infinite-scroll-root .content__subtitle {
+  font-family: "host-grotesk", -apple-system, sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #555555;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-align: left;
+}
+
+.infinite-scroll-root .content__subtitle::before {
+  content: "";
+  display: inline-block;
+  width: 24px;
+  height: 1.5px;
+  background-color: #8B1117;
+}
+
+.infinite-scroll-root .content__description {
+  font-family: "host-grotesk", -apple-system, sans-serif;
+  font-size: clamp(1rem, 1.15vw, 1.15rem);
+  line-height: 1.75;
+  color: #2e2e2e;
+  margin: 0;
+  max-width: 52ch;
+  text-align: left;
+}
+
+/* ---------------------------------------------------------------------------
+ * Phone / small tablet
+ * ---------------------------------------------------------------------------
+ * The desktop layout pins a 100vh-tall, 0.8-ratio image to the left and pushes
+ * the copy past it with `padding-inline: calc(80vh + 1.5vw)`. On a 390px-wide
+ * phone that padding alone is wider than the screen, so the whole detail view
+ * has to be restacked: image on top, copy underneath.
+ * ------------------------------------------------------------------------- */
+@media screen and (max-width: 53em) {
+  .infinite-scroll-root {
+    --page-padding: 1.125rem;
+    /* The archive's vw-based sizes are tuned for a wide screen; a slide set at
+       `--img-w: 12vw` would be a 47px thumbnail on a phone. */
+    --img-scale: 2.4;
+    --stagger-scale: 0.35;
+  }
+
+  .infinite-scroll-root .gallery {
+    gap: 14vh;
+    padding-top: 18vh;
+  }
+
+  .infinite-scroll-root .gallery__img-wrapper {
+    /* Never wider than the screen, however large `--img-w * --img-scale` gets. */
+    max-width: 72vw;
+  }
+
+  .infinite-scroll-root .frame__title {
+    font-size: 11px;
+  }
+
+  .infinite-scroll-root .frame__links {
+    gap: 0.9rem;
+    font-size: 10px;
+  }
+
+  .infinite-scroll-root .frame__tags {
+    display: none;
+  }
+
+  .infinite-scroll-root .frame__note {
+    font-size: 10px;
+  }
+
+  /* Mobile Back Button: Floating glassmorphic pill at top-left */
+  .infinite-scroll-root .content__back {
+    position: fixed;
+    top: calc(env(safe-area-inset-top, 0px) + 1rem);
+    left: 1rem;
+    z-index: 1060;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.5rem 1rem;
+    background: rgba(245, 239, 230, 0.94);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 9999px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.16);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: #141414;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease, opacity 0.2s ease;
+  }
+
+  .infinite-scroll-root .content__back:active {
+    transform: scale(0.94);
+  }
+
+  .infinite-scroll-root .content__back-esc {
+    display: none;
+  }
+
+  /* Nav Chevrons on mobile */
+  .infinite-scroll-root .content__nav-btn {
+    width: 36px;
+    height: 36px;
+    background: rgba(20, 20, 20, 0.55);
+  }
+
+  .infinite-scroll-root .content__nav-btn--prev {
+    left: 0.75rem;
+  }
+
+  .infinite-scroll-root .content__nav-btn--next {
+    right: 0.75rem;
+  }
+
+  /* Image: full width, pinned to the top. */
+  .infinite-scroll-root .content__preview-img {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 48svh;
+    aspect-ratio: auto;
+  }
+
+  /* Copy: starts below counter with generous spacing */
+  .infinite-scroll-root .content__group-list {
+    padding-inline: var(--page-padding);
+    padding-block: calc(48svh + 3.25rem) var(--page-padding);
+  }
+
+  .infinite-scroll-root .content__category {
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    margin-bottom: 0.5rem;
+  }
+
+  .infinite-scroll-root .content__title {
+    /* The desktop layout right-aligns the title against the copy column
+       (`justify-self: end`, which Chrome now honours in block layout too).
+       At phone width that leaves it floating away from the left-aligned body
+       text, so bring both back to the same edge. */
+    justify-self: start;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    font-size: clamp(2rem, 11vw, 3.25rem);
+  }
+
+  .infinite-scroll-root .content__subtitle {
+    margin-bottom: 0.75rem;
+    letter-spacing: 0.2em;
+  }
+
+  .infinite-scroll-root .content__description {
+    justify-self: start;
+    margin-right: 0;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  /* Counter: a horizontal strip tucked under the image instead of a column
+     beside it. */
+  .infinite-scroll-root .content__counter {
+    left: var(--page-padding);
+    right: auto;
+    top: calc(48svh + 0.75rem);
+    transform: none;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+    pointer-events: auto;
+    cursor: pointer;
+  }
+
+  .infinite-scroll-root .content__counter-current {
+    font-size: 1.1rem;
+  }
+
+  .infinite-scroll-root .content__counter-track {
+    width: 48px;
+    height: 2px;
+  }
+
+  .infinite-scroll-root .content__counter-bar {
+    width: var(--counter-fill, 25%);
+    height: 100%;
+    transition: width 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+
+  .infinite-scroll-root .content__counter-hint {
+    margin-top: 0;
+    margin-left: 0.25rem;
+    writing-mode: horizontal-tb;
+    letter-spacing: 0.24em;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .infinite-scroll-root .content__counter-bar {
+    transition: none;
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "nav": {
+    "home": "HOME",
+    "projects": "PROJECTS",
+    "products": "PRODUCTS",
+    "gallery": "GALLERY",
+    "about": "ABOUT",
+    "blog": "BLOG",
+    "contact": "CONTACT",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "tagline": "ARCHITECTURE & SPATIAL DESIGN",
+    "since": "EST. 2017 — ISTANBUL"
+  },
+  "common": {
+    "loading": "Loading",
+    "back": "back",
+    "readMore": "Read more",
+    "viewAll": "View all",
+    "viewProject": "View project",
+    "viewProduct": "View product",
+    "empty": "No content yet.",
+    "error": "Content could not be loaded.",
+    "language": "Language",
+    "scroll": "SCROLL"
+  },
+  "home": {
+    "metaTitle": "EMRE MERİÇ — Architecture & Spatial Design",
+    "metaDescription": "Architect Emre Meriç portfolio. Residential, villa and commercial architecture alongside bespoke spatial objects.",
+    "featuredProjects": "SELECTED WORKS",
+    "featuredProjectsTitle": "Architectural projects",
+    "featuredProducts": "COLLECTION",
+    "featuredProductsTitle": "Bespoke objects",
+    "latestPosts": "JOURNAL",
+    "latestPostsTitle": "Architectural notes"
+  },
+  "projects": {
+    "metaTitle": "Projects",
+    "metaDescription": "47 completed architectural and spatial works by architect Emre Meriç.",
+    "frameTitle": "EMRE MERİÇ — ARCHITECTURAL ARCHIVE",
+    "counter": "{count} SELECTED WORKS — ISTANBUL"
+  },
+  "products": {
+    "metaTitle": "Products",
+    "metaDescription": "Limited-edition furniture and objects designed to complete architectural atmospheres.",
+    "eyebrow": "COLLECTION",
+    "title": "Products",
+    "lead": "Objects designed for space, produced in limited numbers.",
+    "all": "ALL",
+    "specs": "Specifications",
+    "related": "Other objects"
+  },
+  "gallery": {
+    "metaTitle": "3D Gallery",
+    "metaDescription": "Infinite three-dimensional visual canvas exploring architectural details and materiality.",
+    "title": "GALLERY",
+    "hintDesktop": "Drag · scroll to zoom · arrow keys to move",
+    "hintTouch": "Drag · pinch to zoom"
+  },
+  "about": {
+    "metaTitle": "About",
+    "metaDescription": "Architect Emre Meriç's design philosophy, milestones and biography.",
+    "eyebrow": "BIOGRAPHY",
+    "team": "THE ARCHITECT",
+    "timeline": "MILESTONES",
+    "awards": "RECOGNITION"
+  },
+  "blog": {
+    "metaTitle": "Blog",
+    "metaDescription": "Notes on architecture, materials, spatial perception, and on-site craft.",
+    "eyebrow": "JOURNAL",
+    "title": "Blog",
+    "lead": "Personal notes on architecture, material and spatial experience.",
+    "allTags": "ALL",
+    "minRead": "{minutes} min read",
+    "notFound": "Post not found.",
+    "backToBlog": "All posts"
+  },
+  "contact": {
+    "metaTitle": "Contact",
+    "metaDescription": "Reach architect Emre Meriç for new project inquiries, residential commissions and collaborations.",
+    "eyebrow": "CONTACT",
+    "title": "A new project, a brief, or a question.",
+    "formTitle": "Send a Message",
+    "name": "Full name",
+    "email": "Email",
+    "subject": "Project Subject",
+    "message": "Message / Project Brief",
+    "send": "SEND",
+    "sending": "SENDING...",
+    "success": "Your message has been received. I will get back to you shortly.",
+    "failure": "The message could not be sent. Please reach out via email or phone directly.",
+    "required": "This field is required.",
+    "invalidEmail": "Enter a valid email address.",
+    "studio": "ATELIER",
+    "reach": "REACH",
+    "hours": "OFFICE HOURS"
+  },
+  "footer": {
+    "studio": "ATELIER",
+    "navigate": "PAGES",
+    "recognition": "AWARDS",
+    "elsewhere": "SOCIAL",
+    "rights": "ALL RIGHTS RESERVED",
+    "tagline": "ARCHITECTURE & SPATIAL DESIGN"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "lead": "The page you are looking for may have moved, or never existed.",
+    "home": "BACK TO HOME"
+  }
+}

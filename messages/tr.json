@@ -1,0 +1,112 @@
+{
+  "nav": {
+    "home": "ANA SAYFA",
+    "projects": "PROJELER",
+    "products": "ÜRÜNLER",
+    "gallery": "GALERİ",
+    "about": "HAKKIMDA",
+    "blog": "BLOG",
+    "contact": "İLETİŞİM",
+    "openMenu": "Menüyü aç",
+    "closeMenu": "Menüyü kapat",
+    "tagline": "MİMARLIK & MEKÂN TASARIMI",
+    "since": "KURULUŞ 2017 — İSTANBUL"
+  },
+  "common": {
+    "loading": "Yükleniyor",
+    "back": "geri",
+    "readMore": "Devamını oku",
+    "viewAll": "Tümünü gör",
+    "viewProject": "Projeyi incele",
+    "viewProduct": "Ürünü incele",
+    "empty": "Henüz içerik eklenmemiş.",
+    "error": "İçerik yüklenemedi.",
+    "language": "Dil",
+    "scroll": "KAYDIR"
+  },
+  "home": {
+    "metaTitle": "EMRE MERİÇ — Mimarlık & Mekân Tasarımı",
+    "metaDescription": "Mimar Emre Meriç'in mimarlık ve mekân tasarımı portfolyosu. Konut, villa ve ticari mimari projeler, özel mobilya koleksiyonu.",
+    "featuredProjects": "MİMARİ PROJELER",
+    "featuredProjectsTitle": "Seçilmiş işler",
+    "featuredProducts": "ÖZEL KOLEKSİYON",
+    "featuredProductsTitle": "Mekâna özel nesneler",
+    "latestPosts": "GÜNLÜK",
+    "latestPostsTitle": "Mimari notlar"
+  },
+  "projects": {
+    "metaTitle": "Projeler",
+    "metaDescription": "Mimar Emre Meriç'in 47 seçilmiş mimari ve iç mekân projesi.",
+    "frameTitle": "EMRE MERİÇ — MİMARİ ARŞİV",
+    "counter": "{count} SEÇİLMİŞ İŞ — İSTANBUL"
+  },
+  "products": {
+    "metaTitle": "Ürünler",
+    "metaDescription": "Mimari projelerin ruhunu tamamlamak için sınırlı sayıda tasarlanmış özel mobilyalar ve objeler.",
+    "eyebrow": "KOLEKSİYON",
+    "title": "Ürünler",
+    "lead": "Mekân için tasarlanmış, sınırlı sayıda üretilen mimari mobilyalar.",
+    "all": "TÜMÜ",
+    "specs": "Teknik Detaylar",
+    "related": "Diğer Ürünler"
+  },
+  "gallery": {
+    "metaTitle": "3D Galeri",
+    "metaDescription": "Sonsuz üç boyutlu tuval üzerinde mimari detaylar ve görsel arşiv.",
+    "title": "GALERİ",
+    "hintDesktop": "Sürükle · kaydırarak yakınlaş · gezinmek için ok tuşları",
+    "hintTouch": "Sürükle · iki parmakla yakınlaş"
+  },
+  "about": {
+    "metaTitle": "Hakkımda",
+    "metaDescription": "Mimar Emre Meriç'in tasarım felsefesi, mesleki yolculuğu ve biyografisi.",
+    "eyebrow": "BİYOGRAFİ",
+    "team": "MİMAR HAKKINDA",
+    "timeline": "KİLOMETRE TAŞLARI",
+    "awards": "ÖDÜLLER & SEÇKİLER"
+  },
+  "blog": {
+    "metaTitle": "Blog",
+    "metaDescription": "Mimarlık, malzeme arayışları ve mekân tasarımı üzerine notlar.",
+    "eyebrow": "GÜNLÜK",
+    "title": "Blog",
+    "lead": "Mimarlık, malzeme ve mekân deneyimi üzerine kişisel notlar.",
+    "allTags": "TÜMÜ",
+    "minRead": "{minutes} dk okuma",
+    "notFound": "Yazı bulunamadı.",
+    "backToBlog": "Tüm yazılar"
+  },
+  "contact": {
+    "metaTitle": "İletişim",
+    "metaDescription": "Mimar Emre Meriç ile iletişime geçin: yeni proje brifi, villa & konut tasarımı ve iş birlikleri.",
+    "eyebrow": "İLETİŞİM",
+    "title": "Yeni bir proje, brif ya da bir soru.",
+    "formTitle": "Mesaj Gönderin",
+    "name": "Ad Soyad",
+    "email": "E-posta",
+    "subject": "Proje Konusu",
+    "message": "Mesajınız / Proje Özeti",
+    "send": "GÖNDER",
+    "sending": "GÖNDERİLİYOR...",
+    "success": "Mesajınız alındı. En kısa sürede sizinle iletişime geçeceğim.",
+    "failure": "Mesaj gönderilemedi. Lütfen doğrudan e-posta veya telefon ile ulaşın.",
+    "required": "Bu alan zorunlu.",
+    "invalidEmail": "Geçerli bir e-posta adresi girin.",
+    "studio": "ATÖLYE",
+    "reach": "ULAŞIM",
+    "hours": "ÇALIŞMA SAATLERİ"
+  },
+  "footer": {
+    "studio": "ATÖLYE",
+    "navigate": "SAYFALAR",
+    "recognition": "ÖDÜLLER",
+    "elsewhere": "SOSYAL",
+    "rights": "TÜM HAKLARI SAKLIDIR",
+    "tagline": "MİMARLIK & MEKÂN TASARIMI"
+  },
+  "notFound": {
+    "title": "Sayfa bulunamadı",
+    "lead": "Aradığınız sayfa taşınmış ya da hiç var olmamış olabilir.",
+    "home": "ANA SAYFAYA DÖN"
+  }
+}
