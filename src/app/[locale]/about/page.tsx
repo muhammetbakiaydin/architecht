@@ -15,6 +15,7 @@ import SiteShell from '@/components/site/SiteShell';
 import PageHero from '@/components/site/PageHero';
 import SectionHeading from '@/components/site/SectionHeading';
 import Reveal from '@/components/Reveal';
+import AwardsShowcase from '@/components/site/AwardsShowcase';
 
 type PageProps = { params: Promise<{ locale: Locale }> };
 
@@ -201,26 +202,22 @@ export default async function AboutPage({ params }: PageProps) {
       )}
 
       {/* Awards */}
-      {awards.length > 0 && (
-        <section className="border-t border-[#161413]/10 px-6 py-20 md:px-12 md:py-28">
-          <div className="mx-auto max-w-[1440px]">
-            <h2 className="font-syne text-[9px] font-bold uppercase tracking-[0.3em] text-[#161413]/40">
-              {t('awards')}
-            </h2>
-            <ul className="mt-8 grid gap-x-10 gap-y-4 sm:grid-cols-2 lg:grid-cols-4">
-              {awards.map((award) => (
-                <li
-                  key={award.id}
-                  className="flex items-baseline justify-between gap-4 border-b border-[#161413]/12 pb-4 font-syne text-[10px] font-bold uppercase tracking-[0.18em] text-[#161413]/65"
-                >
-                  <span>{award.label}</span>
-                  {award.year && <span className="text-[#8B1117]">{award.year}</span>}
-                </li>
-              ))}
-            </ul>
+      <section className="border-t border-[#161413]/10 px-6 py-20 md:px-12 md:py-28">
+        <div className="mx-auto max-w-[1440px]">
+          <SectionHeading
+            eyebrow={t('awards')}
+            title={locale === 'tr' ? 'Mimari Ödüller & Tesciller' : 'Awards & Recognition'}
+            body={
+              locale === 'tr'
+                ? 'Emre Meriç’in özgün mimari yaklaşımı ve heykelsi mekân tasarımlarının önde gelen mesleki kurumlarca tescillenen uluslararası ve ulusal başarıları.'
+                : 'National and international design honors recognizing Emre Meriç’s bespoke architectural philosophy and artisanal spatial craft.'
+            }
+          />
+          <div className="mt-14">
+            <AwardsShowcase locale={locale} variant="cards" />
           </div>
-        </section>
-      )}
+        </div>
+      </section>
     </SiteShell>
   );
 }

@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Reveal from './Reveal';
+import AwardsShowcase from '@/components/site/AwardsShowcase';
 
 export interface StudioStat {
   value: string;
@@ -76,6 +77,17 @@ export const StudioIntro: React.FC<StudioIntroProps> = ({
             ))}
           </Reveal>
         )}
+
+        {/* Awards Showcase Strip */}
+        <div className="mt-16 border-t border-[#161413]/12 pt-10 md:mt-24 md:pt-14">
+          <div className="flex items-center gap-3 mb-6">
+            <span className="h-px w-6 bg-[#8B1117]" />
+            <span className="font-syne text-[9px] font-bold uppercase tracking-[0.3em] text-[#161413]/50">
+              ULUSLARARASI VE ULUSAL TESCİLLER
+            </span>
+          </div>
+          <AwardsShowcase variant="ribbon" />
+        </div>
       </div>
     </section>
   );
