@@ -114,10 +114,23 @@ export const SiteFooter: React.FC<SiteFooterProps> = ({ settings, awards }) => {
           </div>
         </Reveal>
 
-        <div className="mt-24 overflow-hidden md:mt-32" aria-hidden="true">
-          <span className="block whitespace-nowrap font-syne text-[clamp(3rem,15vw,14rem)] font-bold leading-[0.85] tracking-[-0.03em] text-[#F5EFE6]/10">
-            {settings.brand}
-          </span>
+        <div className="mt-16 w-full select-none overflow-hidden md:mt-28" aria-hidden="true">
+          <svg
+            viewBox="0 0 1150 160"
+            className="w-full h-auto max-h-[160px] md:max-h-[220px] text-[#F5EFE6]/10 pointer-events-none"
+          >
+            <text
+              x="50%"
+              y="56%"
+              dominantBaseline="middle"
+              textAnchor="middle"
+              fill="currentColor"
+              className="font-syne font-bold uppercase tracking-[-0.02em]"
+              fontSize="146"
+            >
+              {settings.brand}
+            </text>
+          </svg>
         </div>
 
         <div className="mt-10 flex flex-col gap-3 border-t border-[#F5EFE6]/15 pt-6 md:flex-row md:items-center md:justify-between">
